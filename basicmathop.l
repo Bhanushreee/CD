@@ -1,0 +1,28 @@
+%{
+#include <stdio.h>
+float op1 = 6, op2 = 7;
+%}
+
+%%
+
+"+" { printf("sum = %f\n", op1 + op2); }
+"-" { printf("diff = %f\n", op1 - op2); }
+"*" { printf("mul = %f\n", op1 * op2); }
+"/" { printf("div = %f\n", op1 / op2); }
+.   { printf("Enter proper operator.\n"); }
+
+%%
+
+int yywrap() {}
+
+int main()
+{
+    printf("Enter number 1: ");
+    scanf("%f", &op1);
+    printf("Enter number 2: ");
+    scanf("%f", &op2);
+    printf("Enter the Operator: ");
+    yylex();
+    return 0;
+}
+
